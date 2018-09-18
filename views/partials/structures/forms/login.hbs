@@ -1,0 +1,52 @@
+<!-- > structures/forms/login -->
+<form action="/account/login" method="POST" >
+  {{#*inline 'login-form-fields'}}
+    <div class="row">
+      <div class="col s12">
+        <h3>Login</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="input-field">
+          <input type="text" name="login" required="true">
+          <label for="login">Username or E-Mail</label>
+        </div>
+      </div>
+      <div class="col s12">
+        <div class="input-field">
+          <input type="password" name="password" required="true">
+          <label for="password">Password</label>
+          <span class="right"><a href="/account/forgotPassword">Forgot Password?</a></span>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+  {{#*inline 'login-form-submit'}}
+    <button type="submit" class="btn">
+      <i class="material-icons left">send</i>
+      login
+    </button>
+  {{/inline}}
+  {{#if useInModal}}
+    <div class="modal-content">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m6 offset-m3">
+            {{> 'login-form-fields'}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      {{> 'login-form-submit'}}
+      <button type="button" class="btn-flat modal-close">cancel</button>
+    </div>
+  {{else}}
+    {{> 'login-form-fields'}}
+    <div class="row">
+      {{> 'login-form-submit'}}
+    </div>
+  {{/if}}
+</form>
+<!-- < structures/forms/login -->

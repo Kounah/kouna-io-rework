@@ -1,0 +1,36 @@
+<!-- > structures/header -->
+<div class="navbar-fixed nav-extended">
+  <nav>
+    <div class="nav-wrapper container">
+      <ul class="left">
+        <li><a href="#" class="sidenav-trigger" data-target="navigation-sidenav" data-edge="left" style="display: block; margin: 0;">
+          <i class="material-icons left">menu</i>
+          menu
+        </a></li>
+      </ul>
+      <ul class="right">
+        {{#if user}}
+          <li><a href="#" class="sidenav-trigger" data-target="user-sidenav">
+            <img class="circle" src="/account/user/{{user._id}}/avatar" alt="avatar" />
+            {{user.username}}
+            <span class="half-visible">
+              {{user.tag}}
+            </span>
+          </a></li>
+        {{else}}
+          <li>
+            {{> 'structures/modals/login' redirect=true }}
+          </li>
+          <li>
+            {{> 'structures/modals/register' redirect=true }}
+          </li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="sidenav" id="navigation-sidenav">
+
+</div>
+<!-- < structures/header -->

@@ -1,0 +1,46 @@
+id: /schema/og
+type: object
+required:
+  - type
+  - title
+properties: {
+  type: {
+    type: string
+  },
+  title: {type: string},
+  description: {type: string},
+  url: {type: string, format: uri},
+  image: {
+    type: object,
+    required: ["url"],
+    properties: {
+      url: {type: string, format: uri},
+      secure_url: {type: string, format: uri},
+      type: {type: string},
+      width: {type: number},
+      height: {type: number},
+      alt: {type: string}
+    }
+  },
+  video: {
+    type: object,
+    required: ["url"],
+    properties: {
+      url: {type: string, format: uri},
+      secure_url: {type: string, format: uri},
+      type: {type: string},
+      width: {type: number},
+      height: {type: number},
+      alt: {type: string},
+    }
+  },
+  audio: {
+    type: object,
+    required: ["url"],
+    properties: {
+      url: {type: string, format: uri},
+      secure_url: {type: string, format: uri},
+      type: {type: string}
+    }
+  }
+}

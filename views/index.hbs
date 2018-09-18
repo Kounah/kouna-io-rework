@@ -1,0 +1,11 @@
+<!-- > index -->
+{{#> 'layouts/main'}}
+  {{#*inline 'content'}}
+    {{#> 'components/linkList'}}
+      {{#each directory}}
+        {{> 'components/linkListItem' icon="folder"}}
+      {{/each}}
+    {{/components/list}}
+  {{/inline}}
+{{/layouts/main}}
+<!-- < index -->
