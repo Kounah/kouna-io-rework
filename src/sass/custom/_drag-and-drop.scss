@@ -1,0 +1,74 @@
+.input-field {
+  .drag-and-drop {
+    padding: 10px;
+    .box {
+      min-height: 200px;
+      width: 100%;
+      box-sizing: border-box;
+      border: dashed $elem-accent-color .25em;
+      color: $elem-font-color;
+      padding: 15px;
+      border-radius: .25em;
+      cursor: pointer;
+
+      transition:
+        padding 0.5s ease-in-out,
+        border-radius 0.75s ease-in-out,
+        border-color 0.5s ease-in-out;
+
+      * {
+        z-index: -1;
+      }
+
+      .gallery {
+        display: flex;
+        max-width: 100%;
+        flex-direction: column;
+        flex-flow: row;
+        flex-wrap: wrap;
+
+        img {
+          display: inline-flex;
+          width: auto;
+          // max-width: calc(100% -12px);
+          height: 120px;
+          margin: 6px;
+          flex-grow: 0;
+          flex-shrink: 2;
+          flex-basis: 0.5;
+
+          &.loading {
+            opacity: 0.4;
+          }
+
+          &.error {
+            &::before {
+              content: 'ERROR'
+            }
+          }
+        }
+      }
+
+      .target {
+        text-align: center;
+        padding-top: 10px;
+        i.material-icons {
+          font-size: 120px;
+          color: $elem-accent-color;
+        }
+      }
+    }
+
+    transition:
+      padding 0.5s ease-in-out;
+
+    &.dragging {
+      padding: 20px;
+      .box {
+        padding: 5px;
+        border-radius: 1.5em;
+        border-color: $secondary-color;
+      }
+    }
+  }
+}

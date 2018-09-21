@@ -1,0 +1,16 @@
+<!-- > account/login -->
+{{#> 'layouts/main'}}
+{{#*inline 'document-title'}}Login{{/inline}}
+{{#*inline 'content' this}}
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        {{> 'structures/forms/login' this}}
+      </div>
+    </div>
+  </div>
+</div>
+{{/inline}}
+{{/layouts/main}}
+<!-- < account/login -->

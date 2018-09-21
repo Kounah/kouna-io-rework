@@ -3243,6 +3243,11 @@ main {
   flex: 1 0 auto;
 }
 
+body {
+  background-color: #FFF;
+  color: black;
+}
+
 span.badge {
   min-width: 3rem;
   padding: 0 6px;
@@ -4479,13 +4484,13 @@ small {
   padding: 24px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
-  background-color: #ececec;
+  background-color: #FFF;
 }
 
 .card {
   position: relative;
   margin: 0.5rem 0 1rem 0;
-  background-color: #ececec;
+  background-color: #FFF;
   transition: box-shadow 0.25s;
   border-radius: 2px;
 }
@@ -4574,7 +4579,7 @@ small {
   width: 100%;
 }
 .card .card-image .card-title {
-  color: #ececec;
+  color: #FFF;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -4617,7 +4622,7 @@ small {
 .card .card-reveal {
   padding: 24px;
   position: absolute;
-  background-color: #ececec;
+  background-color: #FFF;
   width: 100%;
   overflow-y: auto;
   left: 0;
@@ -5296,7 +5301,8 @@ body.keyboard-focused .dropdown-content li:focus {
   position: fixed;
   left: 0;
   right: 0;
-  background-color: #fafafa;
+  background-color: #ececec;
+  color: #131313;
   padding: 0;
   max-height: 70%;
   width: 55%;
@@ -5324,7 +5330,7 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 .modal .modal-footer {
   border-radius: 0 0 2px 2px;
-  background-color: #fafafa;
+  background-color: #ececec;
   padding: 4px 6px;
   height: 56px;
   width: 100%;
@@ -8079,5 +8085,59 @@ input[type=range]::-ms-thumb {
     margin-top: 1.2rem;
   }
 }
-
-/*# sourceMappingURL=dist/css/materialize.css.map */
+.input-field .drag-and-drop {
+  padding: 10px;
+  transition: padding 0.5s ease-in-out;
+}
+.input-field .drag-and-drop .box {
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+  border: dashed #d9d9d9 0.25em;
+  color: #131313;
+  padding: 15px;
+  border-radius: 0.25em;
+  cursor: pointer;
+  transition: padding 0.5s ease-in-out, border-radius 0.75s ease-in-out, border-color 0.5s ease-in-out;
+}
+.input-field .drag-and-drop .box * {
+  z-index: -1;
+}
+.input-field .drag-and-drop .box .gallery {
+  display: flex;
+  max-width: 100%;
+  flex-direction: column;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+.input-field .drag-and-drop .box .gallery img {
+  display: inline-flex;
+  width: auto;
+  height: 120px;
+  margin: 6px;
+  flex-grow: 0;
+  flex-shrink: 2;
+  flex-basis: 0.5;
+}
+.input-field .drag-and-drop .box .gallery img.loading {
+  opacity: 0.4;
+}
+.input-field .drag-and-drop .box .gallery img.error::before {
+  content: "ERROR";
+}
+.input-field .drag-and-drop .box .target {
+  text-align: center;
+  padding-top: 10px;
+}
+.input-field .drag-and-drop .box .target i.material-icons {
+  font-size: 120px;
+  color: #d9d9d9;
+}
+.input-field .drag-and-drop.dragging {
+  padding: 20px;
+}
+.input-field .drag-and-drop.dragging .box {
+  padding: 5px;
+  border-radius: 1.5em;
+  border-color: #ffc107;
+}

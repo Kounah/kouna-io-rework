@@ -7,10 +7,21 @@
       els.forEach(function(el) {
         var edgeAttribute = el.getAttribute('data-edge');
 
+        console.log(el, edgeAttribute);
+
         instances.push(M.Sidenav.init(el, {
           edge: edgeAttribute ? edgeAttribute : 'left'
         }));
       })
+    }
+
+    { // init dropdowns
+      let els = document.querySelectorAll('.dropdown-trigger');
+      let instances = M.Dropdown.init(els, {
+        container: document.body,
+        constrainWidth: false,
+        coverTrigger: false,
+      });
     }
 
     { // label fix

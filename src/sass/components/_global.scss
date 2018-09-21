@@ -777,3 +777,8 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+body {
+  background-color: $background-color;
+  color: $font-color;
+}

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const process = require('process');
 
 var m = fs.readdirSync(__dirname)
   .filter(d => {return d != 'index.js'})
@@ -8,7 +9,7 @@ var m = fs.readdirSync(__dirname)
 var config = {};
 
 m.forEach(d => {
-  console.log('building config ...', d);
+  if(process.env.verbose == true) console.log('building config ...', d);
   config[d.name] = d.module;
 });
 

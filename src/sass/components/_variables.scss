@@ -50,6 +50,9 @@ $elem-accent-color: darken($background-color, 15%);
 $elem-disabled-background: #DFDFDF !default;
 $elem-disabled-color: #9F9F9F;
 
+$elem-font-color: desaturate(invert($elem-background-color), 100%);
+$font-color: desaturate(invert($background-color), 100%);
+
 
 // 2. Badges
 // ==========================================================================
@@ -107,7 +110,7 @@ $button-floating-radius: 50% !default;
 // ==========================================================================
 
 $card-padding: 24px !default;
-$card-bg-color: $elem-background-color !default;
+$card-bg-color: $background-color !default;
 $card-link-color: desaturate($secondary-color, 10%) !default;
 $card-link-color-light: lighten($card-link-color, 20%) !default;
 

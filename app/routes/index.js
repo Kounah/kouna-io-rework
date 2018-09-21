@@ -12,9 +12,27 @@ var m = fs.readdirSync(__dirname)
   })
   .filter(d => {return typeof d.module == 'function'});
 
-module.exports = function(app, passport) {
+module.exports = function(app) {
   m.forEach(m => {
     console.log('executing', m.name.bold, (typeof m.module).italic);
-    m.module(app, passport);
+    m.module(app);
+  });
+
+  app.get('/*', (req, res) => {
+    res.sendStatus(404, {
+      path: req.path
+    });
+  })
+
+  app.post('/*', (req, res) => {
+    res.sendStatus(405, {
+      path: req.path
+    });
+  });
+
+  app.put('/*', (req, res) => {
+    res.sendStatus(405, {
+      path: req.path
+    });
   });
 }

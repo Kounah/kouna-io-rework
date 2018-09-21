@@ -1,3 +1,86 @@
 <!-- > structures/forms/register -->
-
+<form action="/account/register" method="POST">
+  <script src="/resources/js/form-repeat-password.js"></script>
+  {{#*inline 'register-form-fields'}}
+  <div class="row">
+    <div class="col s12 center">
+      <h3>Register Account</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <div class="input-field">
+        <input type="text" name="username" required="true">
+        <label for="username">Username</label>
+      </div>
+    </div>
+    <div class="col s12">
+      <div class="input-field">
+        <input type="email" name="email" required="true">
+        <label for="email">E-Mail address</label>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="input-field">
+        <input type="password" name="password" required="true">
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="input-field">
+        <input type="password" name="repeat-password" required="true">
+        <label for="repeat-password">Repeat password</label>
+        <span class="helper-text" data-error="passwords do not match"></span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="input-field">
+        <input type="text" name="firstName">
+        <label for="firstName">First name</label>
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <div class="input-field">
+        <input type="text" name="lastName">
+        <label for="lastName">Last name</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m6 offset-m3 l4 offset-l4">
+      <div class="g-recaptcha" data-sitekey="6LfUC3EUAAAAAG90RNvZeIS_LcE4dDSkTUMD6LbP"></div>
+    </div>
+  </div>
+  {{/inline}}
+  {{#*inline 'register-form-submit'}}
+  <button type="submit" class="btn right">
+    <i class="material-icons left">send</i>
+    register
+  </button>
+  {{/inline}}
+  {{#if useInModal}}
+  <div class="modal-content">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6 offset-m3">
+          {{> 'register-form-fields'}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    {{> 'register-form-submit'}}
+    <button type="button" class="btn-flat modal-close">cancel</button>
+  </div>
+  {{else}}
+  {{> 'register-form-fields'}}
+  <div class="row">
+    <div class="col s12">
+    {{> 'register-form-submit'}}
+    </div>
+  </div>
+  {{/if}}
+</form>
 <!-- < structures/forms/register -->

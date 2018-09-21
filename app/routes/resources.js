@@ -45,7 +45,7 @@ module.exports = function(app) {
           .sort(byNameProperty);
 
         res.status(200).type('text/html').render('directory', {
-          user: res.user,
+          user: req.user,
           ogData: {
             title: `Content of ${req.path}`,
             type: 'website',

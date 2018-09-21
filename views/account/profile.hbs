@@ -1,0 +1,88 @@
+<!-- > account/profile -->
+{{#> 'layouts/main' this}}
+{{#*inline 'document-title'}}{{user.username}}'s Profile{{/inline}}
+{{#*inline 'content'}}
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Your Profile</span>
+
+        <h4>{{user.username}}#{{user.tag}}</h4>
+
+        <ul class="collection">
+          <li class="collection-item">
+            <span><strong>Username</strong></span>
+            <span class="right">{{> 'helper/ifElseUnset' user.username}}</span>
+          </li>
+          <li class="collection-item">
+            <span><strong>Tag</strong></span>
+            <span class="right">{{> 'helper/ifElseUnset' user.tag}}</span>
+          </li>
+          <li class="collection-item">
+            <span><strong>E-Mail address</strong></span>
+            <span class="right">{{> 'helper/ifElseUnset' user.email}}</span>
+          </li>
+          <li class="collection-item">
+            <span><strong>E-Mail validated</strong></span>
+            <span class="right">{{> 'helper/ifElseUnset' user.emailValidated}}</span>
+          </li>
+          {{!-- <li class="collection-item">
+            <span><strong>Password Hash</strong></span>
+            <span class="right">{{> 'helper/ifElseUnset' user.password}}</span>
+          </li> --}}
+          <li class="collection-item">
+            <span><strong>First name</strong></span>
+            <span class="right">{{> 'helper/ifElseUnset' user.firstName}}</span>
+          </li>
+          <li class="collection-item">
+            <span><strong>Last name</strong></span>
+            <span class="right">{{> 'helper/ifElseUnset' user.lastName}}</span>
+          </li>
+          <li class="collection-item">
+            <span><strong>Avatar</strong></span>
+            <a href="#avatar-modal" class="right modal-trigger">
+              <i class="material-icons">more_vert</i>
+            </a>
+            <div class="modal" id="avatar-modal">
+              {{> 'structures/forms/account/avatar' useInModal=true user=user}}
+            </div>
+          </li>
+          <li class="collection-item">
+            <span><strong>Banner</strong></span>
+            <a href="#banner-modal" class="right modal-trigger">
+              <i class="material-icons">more_vert</i>
+            </a>
+            <div class="modal" id="banner-modal">
+              {{> 'structures/forms/account/banner' useInModal=true user=user}}
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Your Settings</span>
+        <div class="right-align">
+          <a href="/api/user/id/{{user._id}}/settings" class="btn">
+            <i class="material-icons left">settings</i>
+            settings
+          </a>
+        </div>
+        <ul class="collection">
+          <li class="collection-item">
+            <span><strong>Use dark theme?</strong></span>
+            <span class="right">{{> 'helper/ifElseUnset' user.settings.useDarkTheme}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{{/inline}}
+{{/layouts/main}}
+<!-- < account/profile -->

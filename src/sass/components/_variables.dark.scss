@@ -43,12 +43,15 @@ $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
 
-$background-color: color("blue-grey", "darken-4");
+$background-color: color("grey", "darken-4");
 
 $elem-background-color: darken($background-color, 7.5%);
 $elem-accent-color: darken($background-color, 15%);
-$elem-disabled-background: desaturate(lighten($background-color, 30%), 100%) !default;
-$elem-disabled-color: desaturate(lighten($background-color, 50%), 100%);
+$elem-disabled-background: color("grey", "darken-3") !default;
+$elem-disabled-color: color("grey", "darken-1");
+
+$elem-font-color: desaturate(invert($elem-background-color), 100%);
+$font-color: desaturate(invert($background-color), 100%);
 
 
 // 2. Badges
@@ -92,8 +95,8 @@ $button-small-height: $button-height * .9 !default;
 $button-floating-small-size: $button-height * .9 !default;
 
 // Flat buttons
-$button-flat-color: desaturate(invert($elem-background-color), 100%) !default;
-$button-flat-disabled-color: desaturate(lighten(invert($elem-disabled-background), 10%), 100%) !default;
+$button-flat-color: $secondary-color !default;
+$button-flat-disabled-color: transparentize(darken($secondary-color, 10%), 0.38) !default;
 
 // Floating buttons
 $button-floating-background: $secondary-color !default;
@@ -107,7 +110,7 @@ $button-floating-radius: 50% !default;
 // ==========================================================================
 
 $card-padding: 24px !default;
-$card-bg-color: $elem-background-color !default;
+$card-bg-color: lighten($background-color, 5%) !default;
 $card-link-color: desaturate($secondary-color, 10%) !default;
 $card-link-color-light: lighten($card-link-color, 20%) !default;
 
@@ -171,7 +174,7 @@ $dropdown-item-height: 50px !default;
 
 // Text Inputs + Textarea
 $input-height: 3rem !default;
-$input-border-color: $elem-accent-color !default;
+$input-border-color: darken($background-color, 33%) !default;
 $input-border: 1px solid $input-border-color !default;
 $input-background: rgba(0,0,0,0) !default;
 $input-error-color: $error-color !default;

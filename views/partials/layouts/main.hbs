@@ -1,3 +1,4 @@
+<!-- > layouts/main -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,34 +7,35 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color" content="{{config.themeColor}}">
 
-  {{> 'plugins/og' ogData user=user}}
+  {{> 'plugins/og' ogData user=this.user }}
 
-  {{> 'includes/links' linkData user=user}}
+  {{> 'includes/links' linkData user=this.user }}
 
-  {{> 'includes/scripts' scriptData user=user}}
+  {{> 'includes/scripts' scriptData user=this.user }}
 
-  <title>
-    {{#> 'document-title'}}
-      | kouna.io
-    {{/document-title}}
-  </title>
+  <title>{{#> 'document-title'}}| kouna.io{{/document-title}}</title>
 </head>
 <body>
   {{!-- page header and nav --}}
   <header>
-    {{> 'structures/header' headerData user=user}}
+    {{> 'structures/header' headerData user=this.user }}
   </header>
 
   {{!-- page content --}}
   <main>
+    <!-- > @main -->
     {{#> 'main'}}
       <div class="container">
+        <!-- > @content -->
         {{> 'content'}}
+        <!-- < @content -->
       </div>
     {{/main}}
+    <!-- < @main -->
   </main>
 
   {{!-- page footer --}}
-  {{> 'structures/footer' footerData user=user}}
+  {{> 'structures/footer' footerData user=this.user }}
 </body>
 </html>
+<!-- < layouts/main -->

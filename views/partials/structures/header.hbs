@@ -3,23 +3,27 @@
   <nav>
     <div class="nav-wrapper container">
       <ul class="left">
-        <li><a href="#" class="sidenav-trigger" data-target="navigation-sidenav" data-edge="left" style="display: block; margin: 0;">
+        <li><a href="#" class="sidenav-trigger" data-target="navigation-sidenav" style="display: block; margin: 0;">
           <i class="material-icons left">menu</i>
           menu
         </a></li>
       </ul>
       <ul class="right">
         {{#if user}}
-          <li><a href="#" class="sidenav-trigger" data-target="user-sidenav">
-            <img class="circle" src="/account/user/{{user._id}}/avatar" alt="avatar" />
-            {{user.username}}
-            <span class="half-visible">
-              {{user.tag}}
+          <li><a href="#" class="dropdown-trigger" data-target="user-dropdown">
+            {{#if user.avatar}}<img class="circle" src="/account/user/{{user._id}}/avatar" alt="avatar" />{{/if}}
+            <span>
+              {{#ifAdmin user}}
+                <span class="badge left">admin</span>
+              {{else}}
+                <!-- no admin -->
+              {{/ifAdmin}}
+              {{user.username}}#{{user.tag}}
             </span>
           </a></li>
         {{else}}
           <li>
-            {{> 'structures/modals/login' redirect=true }}
+            {{> 'structures/modals/login' redirect=true}}
           </li>
           <li>
             {{> 'structures/modals/register' redirect=true }}
@@ -30,7 +34,13 @@
   </nav>
 </div>
 
-<div class="sidenav" id="navigation-sidenav">
+<ul class="sidenav" id="navigation-sidenav" data-edge="left">
+{{> 'structures/navigation'}}
+</ul>
 
-</div>
+{{#if user}}
+<ul class="dropdown-content" id="user-dropdown">
+  <li><a href="#">cat</a></li>
+</ul>
+{{/if}}
 <!-- < structures/header -->
