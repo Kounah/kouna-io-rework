@@ -11,15 +11,7 @@
       <ul class="right">
         {{#if user}}
           <li><a href="#" class="dropdown-trigger" data-target="user-dropdown">
-            {{#if user.avatar}}<img class="circle" src="/account/user/{{user._id}}/avatar" alt="avatar" />{{/if}}
-            <span>
-              {{#ifAdmin user}}
-                <span class="badge left">admin</span>
-              {{else}}
-                <!-- no admin -->
-              {{/ifAdmin}}
-              {{user.username}}#{{user.tag}}
-            </span>
+            {{> 'structures/user' user=user}}
           </a></li>
         {{else}}
           <li>

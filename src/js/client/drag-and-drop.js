@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', function(){
-
-
   function preventDefaults(e) {
     e.preventDefault();
     e.stopPropagation();
   }
 
-  function uploadFile(file, callback) {
-    let url = '/api/image'
+  function uploadFile(file, target, callback) {
+    let url = target
     let formData = new FormData()
 
-    formData.append('file', file)
+    formData.append('image', file)
 
     fetch(url, {
       method: 'POST',
@@ -20,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
     .catch((err) => { callback(err, null) })
   }
 
-  function handleFiles(files, sourceElement) {
+  function handleFiles(files, sourceElement, target) {
     console.log(sourceElement);
 
     ([...files]).forEach(file => {
@@ -33,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function(){
         img.src = reader.result;
         sourceElement.querySelector('.gallery').appendChild(img);
 
-        uploadFile(file, function(err, result) {
+        uploadFile(file, target, function(err, result) {
           img.classList.remove('loading');
           if(err) {
             img.classList.add('error')
@@ -48,21 +46,22 @@ document.addEventListener('DOMContentLoaded', function(){
     })
   }
 
-  function handleDrop(e, container) {
+  function handleDrop(e, container, target) {
     let dt = e.dataTransfer;
     let files = dt.files;
 
-    handleFiles(files, container);
+    handleFiles(files, container, target);
   }
 
   var dndContainers = document.querySelectorAll('.drag-and-drop');
   dndContainers.forEach(function(dndContainer) {
     var boxes = dndContainer.querySelectorAll('.box');
+    var form = dndContainer.parentElement;
+    while(form.tagName.toLowerCase() != 'form') {
+      form = form.parentElement;
+    }
+    var target = form.getAttribute('action');
     boxes.forEach(function(box) {
-      var input = box.querySelector('input[type="file"]');
-
-      input.addEventListener('change', handleDrop);
-
       ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
         box.addEventListener(eventName, preventDefaults)
       })
@@ -76,12 +75,8 @@ document.addEventListener('DOMContentLoaded', function(){
       })
 
       box.addEventListener('drop', function(e) {
-        handleDrop(e, dndContainer);
+        handleDrop(e, dndContainer, target);
       }, false)
-
-      box.addEventListener('click', function() {
-        input.dispatchEvent('click');
-      })
     })
   })
 

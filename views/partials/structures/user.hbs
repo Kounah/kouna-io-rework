@@ -1,0 +1,12 @@
+{{#if user.avatar}}<img class="circle" src="/account/user/{{user._id}}/avatar" alt="avatar" />{{/if}}
+<span>
+  {{#ifAdmin user}}
+  <i class="material-icons left tooltipped" data-tooltip="
+    <h5>Administrator</h5>
+    <p>This User has administrative rights, whatever you do, be sure not to mess with them</p>
+  ">verified_user</i>
+  {{else}}
+  <!-- no admin -->
+  {{/ifAdmin}}
+  {{user.username}}#{{user.tag}}
+</span>

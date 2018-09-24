@@ -16,7 +16,8 @@
     "filesize": "^3.6.1",
     "jquery": "^3.3.1",
     "mime-types": "^2.1.20",
-    "mongoose": "^5.2.15"
+    "mongoose": "^5.2.15",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "materialize-css": "^1.0.0",

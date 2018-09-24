@@ -1,0 +1,43 @@
+<!-- > gallery -->
+{{#> 'layouts/main' this}}
+{{#* inline 'document-title'}}Gallery{{/inline}}
+{{#* inline 'content'}}
+{{> 'structures/forms/gallery/upload' this}}
+{{#if images}}
+<div class="row">
+  {{#each images}}
+  <div class="col s12 m6 l4">
+    <div class="card">
+      <div class="card-image">
+        <img class="materialboxed responsive-img" src="/gallery/image/{{_id}}" alt="{{name}}">
+        <span class="card-title super-visible-text">{{name}}</span>
+        <a class="btn-floating halfway-fab waves-effect waves-light activator"><i class="material-icons">expand_more</i></a>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title">Detail<i class="material-icons right">close</i></span>
+        <p>
+          <strong>Filename</strong>
+          <span class="right">{{name}}</span>
+          <br>
+          <strong>Created</strong>
+          <span class="right">{{cDate}}</span>
+          <br>
+          <strong>Modified</strong>
+          <span class="right">{{mDate}}</span>
+          <br>
+        </p>
+      </div>
+      <div class="card-action">
+        <a href="/gallery/image/{{_id}}">
+          <i class="material-icons left">fullscreen</i>
+          Open
+        </a>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+{{/if}}
+{{/inline}}
+{{/layouts/main}}
+<!-- < gallery -->
